@@ -70,12 +70,6 @@ def extract_features(imgs, color_space='RGB', spatial_size=(32, 32),
                 feature_image = cv2.cvtColor(image, cv2.COLOR_RGB2YCrCb)
         else: feature_image = np.copy(image)
 
-            # rescale image if other than 1.0 scale
-        scale = 0
-        if scale != 1:
-            imshape = feature_image.shape
-            ctrans_tosearch = cv2.resize(feature_image, (np.int(imshape[1]/scale), np.int(imshape[0]/scale)))
-
         if spatial_feat == True:
             spatial_features = bin_spatial(feature_image, size=spatial_size)
             file_features.append(spatial_features)
