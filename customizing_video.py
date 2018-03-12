@@ -67,7 +67,7 @@ class HeatHistory():
     def __init__(self):
         self.history = []
 
-def processVideo(inputVideo, outputVideo, frames_to_remember=3, threshhold=1):
+def processVideo(inputVideo, outputVideo, frames_to_remember=5, threshhold=1):
     """
     Process the video `inputVideo` to find the cars and saves the video to `outputVideo`.
     """
@@ -94,10 +94,13 @@ def processVideo(inputVideo, outputVideo, frames_to_remember=3, threshhold=1):
             heat = np.zeros_like(img[:,:,0]).astype(np.float)
             heat = add_heat(heat,box_listt)
 
-            if False:
+            if True:
                 ## custome selection
                 if len(history.history) >= frames_to_remember:
                     history.history = history.history[1:]
+                    #print(type(history.history))
+                    #print('#Rows = ',len(history.history[0]))
+                    #print('#Cols = ',len(history.history))
 
                 history.history.append(heat)
                 heat_history = reduce(lambda h, acc: h + acc, history.history)/frames_to_remember
@@ -115,4 +118,4 @@ def processVideo(inputVideo, outputVideo, frames_to_remember=3, threshhold=1):
     output_video = myclip.fl_image(pipeline).subclip(1,2)
     output_video.write_videofile(outputVideo, audio=False)
 
-processVideo('test_video.mp4', './video_output/project_video_teste.mp4', threshhold=2)
+processVideo('project_video.mp4', './video_output/project_video_final.mp4', threshhold=2)
