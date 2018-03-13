@@ -17,9 +17,9 @@ The goals / steps of this project are the following:
 [image1]: ./writeup_images/cars_classes_0.png
 [image2]: ./writeup_images/generic_channel_HUG.png
 [image3]: ./writeup_images/script_training_result.png
-[image4]: ./examples/sliding_window.jpg
-[image5]: ./examples/bboxes_and_heat.png
-[image6]: ./examples/labels_map.png
+[image4]: ./writeup_images/sliding_window_0.png
+[image5]: ./writeup_images/sliding_windows_1.png
+[image6]: ./writeup_images/sliding_windows_2.png
 [image7]: ./examples/output_bboxes.png
 [video1]: ./project_video.mp4
 
@@ -66,15 +66,19 @@ The next important step  is related to classify using SVC.  Check the accuracy r
 
 #### 1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
 
-I decided to search random window positions at random scales all over the image and came up with this (ok just kidding I didn't actually ;):
+I decided to search using sub-sample technique following the code provided in the class. So, in the IPython notebook called ` project_solution.ipynb` in the cell 9 there is a section dedicated to slide window. In this cell I defined a helper function called `getting_windows_info()`, this function uses the udacity class code `slide_window()` and `search_windows()`. In the script defined in the class `own_functions.py` since the line 81.
 
-![alt text][image3]
+![alt text][image4]
+
+The same sliding window search was optimized with the function `find_cars()`  code provided in the class (check code line 223 in `own_function.py` class function ). Check the result of this step.
+
+![alt text][image5]
 
 #### 2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
 Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
 
-![alt text][image4]
+![alt text][image6]
 ---
 
 ### Video Implementation
