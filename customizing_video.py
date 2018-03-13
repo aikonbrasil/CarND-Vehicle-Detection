@@ -89,7 +89,8 @@ def processVideo(inputVideo, outputVideo, frames_to_remember=5, threshhold=1):
             spatial_size = parametros.spatial_size
             hist_bins = parametros.hist_bins
 
-            box_listt,window_img = find_cars(img, ystart, ystop, scale, svc, X_scaler, orient, pix_per_cell, cell_per_block, spatial_size, hist_bins)
+            #box_listt,window_img = find_cars(img, ystart, ystop, scale, svc, X_scaler, orient, pix_per_cell, cell_per_block, spatial_size, hist_bins)
+            box_listt=find_cars_opt(img, ystart, ystop, scale, svc, X_scaler, orient, pix_per_cell, cell_per_block, spatial_size, hist_bins)
 
             heat = np.zeros_like(img[:,:,0]).astype(np.float)
             heat = add_heat(heat,box_listt)
@@ -115,7 +116,8 @@ def processVideo(inputVideo, outputVideo, frames_to_remember=5, threshhold=1):
             return draw_labeled_bboxes(np.copy(img), labels)
 
     myclip = VideoFileClip(inputVideo)
-    output_video = myclip.fl_image(pipeline).subclip(1,2)
+    output_video = myclip.fl_image(pipeline).subclip(1,10)
+    #output_video = myclip.fl_image(pipeline)
     output_video.write_videofile(outputVideo, audio=False)
 
 processVideo('project_video.mp4', './video_output/project_video_final.mp4', threshhold=2)
