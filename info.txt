@@ -1,1 +1,0 @@
-https://github.com/darienmt/CarND-Vehicle-Detection-P5/blob/master/Vehicle%20Detection.ipynb
