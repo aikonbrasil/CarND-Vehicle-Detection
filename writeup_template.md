@@ -14,9 +14,9 @@ The goals / steps of this project are the following:
 * Estimate a bounding box for vehicles detected.
 
 [//]: # (Image References)
-[image1]: ./writeup_images/car_not_car.png
-[image2]: ./examples/HOG_example.jpg
-[image3]: ./examples/sliding_windows.jpg
+[image1]: ./writeup_images/cars_classes_0.png
+[image2]: ./writeup_images/generic_channel_HUG.png
+[image3]: ./writeup_images/script_training_result.png
 [image4]: ./examples/sliding_window.jpg
 [image5]: ./examples/bboxes_and_heat.png
 [image6]: ./examples/labels_map.png
@@ -37,7 +37,7 @@ You're reading it!
 
 #### 1. Explain how (and identify where in your code) you extracted HOG features from the training images.
 
-The code for this step is contained in the first code cell of the IPython notebook called project_solution inside the section called `Histogram of Oriented Gradients `(or the customized version of HOG in lines 54 through 55 of the file called `script.py`). I have re-used the class code with the function `extract_features(DATA_SET) `.  
+The code for this step is contained in the first code cell of the IPython notebook called `project_solution.ipynb` inside the section called `Histogram of Oriented Gradients `(or the customized version of HOG in lines 54 through 55 of the file called `script.py`). I have re-used the class code with the function `extract_features(DATA_SET) `.  
 
 I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
 
@@ -45,18 +45,22 @@ I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an 
 
 I then explored different color spaces and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`).  I grabbed random images from each of the two classes and displayed them to get a feel for what the `skimage.hog()` output looks like.
 
-Here is an example using the `YCrCb` color space and HOG parameters of `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
+Here is an example using an generic channel and HOG parameters of `orientations=9`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`. In this case I used the function `get_hog_features()` that is defined in the file library called `own_functions.py` in the line 65:
 
 
 ![alt text][image2]
 
 #### 2. Explain how you settled on your final choice of HOG parameters.
 
-I tried various combinations of parameters and...
+I tried various combinations of parameters. In this stage, I used also Udacity code provided in code. However parameter selection was done using a custom function called `tweak_function_hug_extracting_features()`. Extracting features using HOG is done using different color spaces, with specific orientation vectors number for each cell (with its pix_per_cell value), it is also considered a normalization in every block of subset image. The best configuration of parameters was: `color_space='YCrCb', spatial_size=(16, 16),hist_bins=32, orient=8,pix_per_cell=8, cell_per_block=2, hog_channel="ALL",hist_range=(0, 256)`. This values were defined in the optimized code in the file `own_function.py` since the line code number 8.
 
 #### 3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
-I trained a linear SVM using...
+In the 7th code cell of the IPython notebook called `project_solution.ipynb` there is a section called "Training the classifier with dataset of cars and non cars groups". First I defined the definitive extracting features parameters of function called `extract_features()` (check code line 8 of library `own_function.py`). In the next cell (labeled as training classifier) I created an array stack of feature vectors (car and non-cars), I defined the labels vector, I scaled and normalized using `standardScaler()` function. After that I split the dataset in randomized training sets and also I divided the dataset in dataset for training (X_train, X_test, y_train, and y_test).
+
+The next important step  is related to classify using SVC.  Check the accuracy rate using the previous parameters as the final result of the classify train.
+
+![alt text][image3]
 
 ### Sliding Window Search
 
