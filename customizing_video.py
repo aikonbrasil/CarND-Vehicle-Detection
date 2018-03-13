@@ -109,15 +109,15 @@ def processVideo(inputVideo, outputVideo, frames_to_remember=5, threshhold=1):
                 ## END OF CUSTOME selection
 
             # Apply threshold to help remove false positives
-            heat = apply_threshold(heat,2)
+            heat = apply_threshold(heat,1)
             #heatmap = apply_threshold(heat_history, 2)
             labels = label(heat)
 
             return draw_labeled_bboxes(np.copy(img), labels)
 
     myclip = VideoFileClip(inputVideo)
-    output_video = myclip.fl_image(pipeline).subclip(8,20)
-    #output_video = myclip.fl_image(pipeline)
+    #output_video = myclip.fl_image(pipeline).subclip(40,41)
+    output_video = myclip.fl_image(pipeline)
     output_video.write_videofile(outputVideo, audio=False)
 
 processVideo('project_video.mp4', './video_output/project_video_final.mp4', threshhold=2)
