@@ -20,8 +20,8 @@ The goals / steps of this project are the following:
 [image4]: ./writeup_images/sliding_window_0.png
 [image5]: ./writeup_images/sliding_windows_1.png
 [image6]: ./writeup_images/sliding_windows_2.png
-[image7]: ./examples/output_bboxes.png
-[video1]: ./project_video.mp4
+[image7]: ./writeup_images/image_intro_video.png
+[video1]: ./video_output/project_video_final.mp4
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
 ### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
@@ -85,6 +85,8 @@ Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spat
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
 Here's a [link to my video result](./project_video.mp4)
+
+Hereś a ![alt text][video1]
 
 
 #### 2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
