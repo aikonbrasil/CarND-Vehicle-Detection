@@ -88,7 +88,7 @@ Ultimately I performed the search with the same code provided by Udacity in the 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
 
 
-Here's a ![Link to my video result][video1] or in case it is not possible to play in the browser, you can check it in Youtube ![Video in Youtube][https://youtu.be/jV1pgFoNyVo]. As you can check, there are a minimal false positives in the shadow region of the video. But in general, the car detection was well performed.
+Here's a ![Link to my video result][video1] or in case it is not possible to play in the browser, you can check it in Youtube [Video in Youtube][https://youtu.be/jV1pgFoNyVo]. As you can check, there are a minimal false positives in the shadow region of the video. But in general, the car detection was well performed.
 
 
 #### 2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
