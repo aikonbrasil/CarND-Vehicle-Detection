@@ -116,7 +116,7 @@ def processVideo(inputVideo, outputVideo, frames_to_remember=5, threshhold=1):
             return draw_labeled_bboxes(np.copy(img), labels)
 
     myclip = VideoFileClip(inputVideo)
-    output_video = myclip.fl_image(pipeline).subclip(1,10)
+    output_video = myclip.fl_image(pipeline).subclip(8,20)
     #output_video = myclip.fl_image(pipeline)
     output_video.write_videofile(outputVideo, audio=False)
 
